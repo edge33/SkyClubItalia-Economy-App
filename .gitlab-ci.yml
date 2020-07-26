@@ -4,7 +4,7 @@ before_script:
   - apt-get update
   - apt-get install zip unzip lftp
 
-  cache:
+cache:
   paths:
     - node_modules/
 
