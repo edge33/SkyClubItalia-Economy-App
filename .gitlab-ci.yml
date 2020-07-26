@@ -1,5 +1,9 @@
 image: trion/ng-cli-karma
 
+before_script:
+  - apt-get update
+  - apt-get install lftp
+
 cache:
   paths:
     - node_modules/
