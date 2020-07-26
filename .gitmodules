@@ -1,3 +1,0 @@
-[submodule "deploy-scripts"]
-	path = deploy-scripts
-	url = ../deploy-scripts.git
