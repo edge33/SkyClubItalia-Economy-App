@@ -11,8 +11,6 @@ deploy:
   script:
   - rm ./package-lock.json
   - npm install
-  # - ng test --progress false --single-run=true --watch=false
-  # - ng e2e --progress false --watch=false
   - ng build --progress false --prod
   - zip -rqj economy.zip dist/
   - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;  put -O ./domains/skyclubitalia.it/public_html/economy-app economy.zip"
