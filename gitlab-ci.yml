@@ -7,7 +7,7 @@ cache:
 deploy:
  only:
   refs:
-   - master
+  - master
   script:
   - rm ./package-lock.json
   - npm install
