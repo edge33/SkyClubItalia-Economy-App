@@ -8,13 +8,13 @@ deploy:
   only:
     refs:
       - master
-    script:
-      - rm ./package-lock.json
-      - npm install
-      - ng build --progress false --prod
-      - zip -rqj economy.zip dist/
-      - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;  put -O ./domains/skyclubitalia.it/public_html/economy-app economy.zip"
-      - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;  put -O ./domains/skyclubitalia.it/public_html/economy-app deploy-scripts/unzip.php"
-      - curl skyclubitalia.it/economy-app/unzip.php
-      - lftp -e  "set ftp:ssl-allow no; rm /domains/skyclubitalia.it/public_html/economy-app/unzip.php /domains/skyclubitalia.it/public_html/economy-app/economy.zip; bye" --u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
-      - lftp -e  "set ftp:ssl-allow no; rm /domains/skyclubitalia.it/EconomyREST/economy.zip; bye" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
+  script:
+    - rm ./package-lock.json
+    - npm install
+    - ng build --progress false --prod
+    - zip -rqj economy.zip dist/
+    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;  put -O ./domains/skyclubitalia.it/public_html/economy-app economy.zip"
+    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;  put -O ./domains/skyclubitalia.it/public_html/economy-app deploy-scripts/unzip.php"
+    - curl skyclubitalia.it/economy-app/unzip.php
+    - lftp -e  "set ftp:ssl-allow no; rm /domains/skyclubitalia.it/public_html/economy-app/unzip.php /domains/skyclubitalia.it/public_html/economy-app/economy.zip; bye" --u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
+    - lftp -e  "set ftp:ssl-allow no; rm /domains/skyclubitalia.it/EconomyREST/economy.zip; bye" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
